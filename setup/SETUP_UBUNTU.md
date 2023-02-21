@@ -83,7 +83,7 @@ To complete this step, you will need to run the [remote-system-setup.yml](https:
 
 
 # Video Demonstration
-This is a demonstration for setup on `RHEL System` and consists of more steps than required for an `Ubuntu` system but flow is almost same for both OS. 
+This is a demonstration for setup on `RHEL System` and consists of more steps than required for an `Ubuntu` system but flow is almost same for both OS, **start at 5:10**. 
 
 https://user-images.githubusercontent.com/20452032/219795863-99c048ec-045f-4737-aab1-e29a704b9469.mp4
 
