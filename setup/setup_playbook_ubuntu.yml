@@ -7,6 +7,7 @@
     user: amundra
     user_home: "/root"
     app_root: "{{ user_home }}/expertiza"
+    rbenv_root: "/usr/local/rbenv"
     ruby_version: 3.2.1
 
   tasks:
@@ -38,8 +39,8 @@
         
     - name: Install Rbenv and Ruby-build
       ansible.builtin.shell: |
-        git clone https://github.com/rbenv/rbenv.git  "/usr/rbenv"
-        git clone https://github.com/rbenv/ruby-build.git  "/usr/rbenv/plugins/ruby-build"
+        git clone https://github.com/rbenv/rbenv.git  "{{ rbenv_root }}"
+        git clone https://github.com/rbenv/ruby-build.git  "{{ rbenv_root }}/plugins/ruby-build"
         
     - name: Add Java and rbenv to PATH
       ansible.builtin.blockinfile:
@@ -47,14 +48,14 @@
         block: |
           export PATH=$PATH:/usr/jdk-11/bin
           export JAVA_HOME=/usr/jdk-11
-          export PATH=$PATH:/usr/rbenv/bin
-          export PATH=$PATH:/usr/rbenv/plugins/ruby-build/bin
+          export PATH=$PATH:"{{ rbenv_root }}/bin"
+          export PATH=$PATH:"{{ rbenv_root }}/plugins/ruby-build/bin"
           eval "$(rbenv init - bash)"
         
-    - name: Install Ruby
-      ansible.builtin.shell: |
-        /usr/rbenv/bin/rbenv install "{{ ruby_version }}"
-        /usr/rbenv/bin/rbenv global "{{ ruby_version }}"
+#     - name: Install Ruby
+#       ansible.builtin.shell: |
+#         /usr/rbenv/bin/rbenv install "{{ ruby_version }}"
+#         /usr/rbenv/bin/rbenv global "{{ ruby_version }}"
       
     - name: Install MySQL and Redis
       become: true
