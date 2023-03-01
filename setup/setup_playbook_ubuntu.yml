@@ -39,7 +39,7 @@
     - name: Install Rbenv and Ruby-build
       ansible.builtin.shell: |
         git clone https://github.com/rbenv/rbenv.git  "/usr/rbenv"
-        git clone https://github.com/rbenv/ruby-build.git  "usr/rbenv/plugins/ruby-build"
+        git clone https://github.com/rbenv/ruby-build.git  "/usr/rbenv/plugins/ruby-build"
         
     - name: Add Java and rbenv to PATH
       ansible.builtin.blockinfile:
