@@ -53,8 +53,9 @@
         
     - name: Install Ruby
       ansible.builtin.shell: |
-        "/usr/rbenv/bin/rbenv" install "{{ ruby_version }}"
-        "/usr/rbenv/bin/rbenv" global "{{ ruby_version }}"
+        eval "$(/usr/rbenv/bin/rbenv init - bash)"
+        rbenv install "{{ ruby_version }}"
+        rbenv global "{{ ruby_version }}"
       
     - name: Install MySQL and Redis
       become: true
