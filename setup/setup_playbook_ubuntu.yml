@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    user: amundra
+    user: expertiza
     user_home: "/root"
     app_root: "{{ user_home }}/expertiza"
     rbenv_root: "/usr/local/rbenv"
